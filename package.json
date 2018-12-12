@@ -1,0 +1,37 @@
+{
+  "name": "@xg4/node-aes",
+  "version": "0.0.3",
+  "description": "crypto AES",
+  "main": "dist/index.min.js",
+  "author": "xg4 <xingor4@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "rollup -c -w",
+    "build": "rollup -c",
+    "release": "npm run build && cross-env-shell git commit -am \"v\"$npm_package_version && cross-env-shell git tag \"v\"$npm_package_version && git push && git push --tags && npm publish --access=public"
+  },
+  "keywords": [
+    "crypto",
+    "AES"
+  ],
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xg4/node-aes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xg4/node-aes/issues"
+  },
+  "homepage": "https://github.com/xg4/node-aes#readme",
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/plugin-proposal-class-properties": "^7.2.1",
+    "@babel/preset-env": "^7.2.0",
+    "cross-env": "^5.2.0",
+    "rollup": "^0.67.4",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-uglify": "^6.0.0"
+  }
+}

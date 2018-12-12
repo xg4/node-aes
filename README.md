@@ -1,2 +1,7 @@
 # node-aes
-crypto aes
+
+> crypto AES
+
+## LICENSE
+
+MIT
