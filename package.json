@@ -1,6 +1,6 @@
 {
   "name": "@xg4/node-aes",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "crypto AES",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
