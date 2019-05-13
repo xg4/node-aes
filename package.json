@@ -35,7 +35,7 @@
     "start": "rollup -c -w",
     "pretest": "npm run lint",
     "test": "jest",
-    "test:cov": "npm run test -- --coverage",
+    "test:cov": "jest --coverage",
     "test:watch": "jest --watch --notify",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
