@@ -1,4 +1,4 @@
-# node-aes
+# Node AES
 
 > crypto AES
 

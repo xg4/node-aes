@@ -1,45 +1,41 @@
-import Crypto, {
-  CipherCCMTypes,
-  CipherGCMTypes,
-  Utf8AsciiBinaryEncoding,
-  HexBase64BinaryEncoding
-} from 'crypto'
+import Crypto from 'crypto'
 
 interface Options {
-  module: string | CipherCCMTypes | CipherGCMTypes
-  input: Utf8AsciiBinaryEncoding
-  output: HexBase64BinaryEncoding
-  encoding: string
+  module: string | Crypto.CipherCCMTypes | Crypto.CipherGCMTypes
+  input: Crypto.Utf8AsciiBinaryEncoding
+  output: Crypto.HexBase64BinaryEncoding
+  encoding: BufferEncoding
 }
 
 export default class NodeAES {
   private static instance: NodeAES
 
-  static create(options: Options) {
+  public static create(options: Options): NodeAES {
     if (!this.instance) {
       this.instance = new this(options)
     }
+    this.instance.setOptions(options)
     return this.instance
   }
 
   private options: Options
 
-  constructor(options: Options) {
+  public constructor(options: Options) {
     this.options = options
   }
 
-  setOptions(options: Options) {
+  public setOptions(options: Options): void {
     this.options = {
       ...this.options,
       ...options
     }
   }
 
-  encrypt(
-    key: string | Buffer | NodeJS.TypedArray | DataView,
+  public encrypt(
+    key: Crypto.CipherKey,
     data: string,
-    iv: string | Buffer | NodeJS.TypedArray | DataView
-  ) {
+    iv: Crypto.BinaryLike | null
+  ): string {
     const cipher = Crypto.createCipheriv(this.options.module, key, iv)
     cipher.setAutoPadding(true)
     let crypted = cipher.update(data, this.options.input, this.options.output)
@@ -50,11 +46,11 @@ export default class NodeAES {
     return crypted
   }
 
-  decrypt(
-    key: string | Buffer | NodeJS.TypedArray | DataView,
+  public decrypt(
+    key: Crypto.BinaryLike,
     crypted: string,
-    iv: string | Buffer | NodeJS.TypedArray | DataView
-  ) {
+    iv: Crypto.BinaryLike | null
+  ): string {
     crypted = Buffer.from(crypted, this.options.encoding).toString(
       this.options.output
     )

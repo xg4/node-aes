@@ -16,6 +16,11 @@ export default {
     {
       file: pkg.module,
       format: 'es'
+    },
+    {
+      name: 'NodeAES',
+      file: pkg.browser,
+      format: 'umd'
     }
   ],
   plugins: [
