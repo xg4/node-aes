@@ -30,14 +30,17 @@
     "build:types": "tsc --emitDeclarationOnly",
     "clean": "rimraf dist",
     "lint": "eslint --ext .ts,.js --ignore-path .gitignore . --fix",
-    "release": "npm run build && git commit -am \"v\"$npm_package_version && git tag \"v\"$npm_package_version && git push && git push --tags && npm publish --access",
+    "prepublish": "npm run build",
+    "postpublish": "git push && git push --tags",
     "start": "rollup -c -w",
+    "pretest": "npm run lint",
     "test": "jest",
     "test:cov": "npm run test -- --coverage",
     "test:watch": "jest --watch --notify",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
-    "preversion": "npm run build"
+    "preversion": "npm run test",
+    "postversion": "npm publish"
   },
   "husky": {
     "hooks": {
