@@ -36,7 +36,8 @@
     "test:cov": "npm run test -- --coverage",
     "test:watch": "jest --watch --notify",
     "type-check": "tsc --noEmit",
-    "type-check:watch": "npm run type-check -- --watch"
+    "type-check:watch": "npm run type-check -- --watch",
+    "preversion": "npm run build"
   },
   "husky": {
     "hooks": {
@@ -49,7 +50,7 @@
       "eslint --fix",
       "git add"
     ],
-    "*.{json,md}": [
+    "*.{json,md,yml}": [
       "prettier --write",
       "git add"
     ]
