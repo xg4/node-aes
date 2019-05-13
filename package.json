@@ -1,6 +1,6 @@
 {
   "name": "@xg4/node-aes",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "crypto AES",
   "keywords": [
     "AES",
