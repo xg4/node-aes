@@ -24,7 +24,7 @@ export default class NodeAES {
     this.options = options
   }
 
-  public setOptions(options: Options): void {
+  public setOptions(options: Partial<Options>): void {
     this.options = {
       ...this.options,
       ...options
