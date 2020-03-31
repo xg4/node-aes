@@ -1,0 +1,64 @@
+name: Node.js AES
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  test-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
+      - name: Install
+        run: yarn
+
+      - name: Test
+        run: npm run test
+
+  test-macOS:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
+      - name: Install
+        run: yarn
+
+      - name: Test
+        run: npm run test
+
+  test-ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Node Version
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+
+      - name: Install
+        run: yarn
+
+      - name: Test
+        run: npm run test:cov
+
+      - name: Coverage
+        run: npx codecov
+
+      - name: Build
+        run: npm run build
